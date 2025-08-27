@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Guarde.me</string>
+    <string name="default_notification_channel_id">guarde_me_default</string>
+    <string name="memory_delivery_channel_name">Entrega de Memórias</string>
+    <string name="memory_delivery_channel_description">Notificações quando suas memórias são entregues</string>
+    <string name="reminders_channel_name">Lembretes</string>
+    <string name="reminders_channel_description">Lembretes e alertas importantes</string>
+    <string name="general_channel_name">Geral</string>
+    <string name="general_channel_description">Notificações gerais do app</string>
+</resources>

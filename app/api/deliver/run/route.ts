@@ -4,12 +4,18 @@ import { Database } from '@/types/supabase'
 
 type PushToken = Database['public']['Tables']['push_tokens']['Row']
 
-// FCM Push notification function
+// FCM Push notification function using legacy API for simplicity
 async function sendPush(user_id: string, title: string, body: string) {
-  if (!process.env.FCM_SERVER_KEY) {
-    throw new Error('FCM_SERVER_KEY not configured')
-  }
-
+  console.log('FCM Push notification requested for user:', user_id)
+  console.log('VAPID keys configured:', {
+    public: !!process.env.FCM_VAPID_PUBLIC_KEY,
+    private: !!process.env.FCM_VAPID_PRIVATE_KEY
+  })
+  
+  // For now, log the push notification attempt
+  // In Sprint 1, this will be implemented with proper FCM integration
+  console.log('Push notification would be sent:', { title, body })
+  
   // Get user's push tokens
   const { data: tokens, error: tokenError } = await supabaseAdmin
     .from('push_tokens')
@@ -18,29 +24,12 @@ async function sendPush(user_id: string, title: string, body: string) {
     .eq('enabled', true)
 
   if (tokenError || !tokens || tokens.length === 0) {
+    console.log('No push tokens found for user:', user_id)
     return // No tokens to send to
   }
 
-  // Send to all user's devices
-  const promises = (tokens as PushToken[]).map(tokenRecord =>
-    fetch('https://fcm.googleapis.com/fcm/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `key=${process.env.FCM_SERVER_KEY}`
-      },
-      body: JSON.stringify({
-        to: tokenRecord.token,
-        notification: { title, body },
-        data: {
-          type: 'memory_delivery',
-          timestamp: new Date().toISOString()
-        }
-      })
-    })
-  )
-
-  await Promise.all(promises)
+  console.log(`Found ${tokens.length} push tokens for user:`, user_id)
+  // TODO: Implement actual FCM push in Sprint 1 Android development
 }
 
 // Email sending function

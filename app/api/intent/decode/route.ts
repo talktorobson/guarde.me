@@ -6,12 +6,12 @@ import { z } from 'zod'
 const IntentSchema = z.object({
   intent: z.enum(['SAVE_MEMORY', 'SCHEDULE_REPLAY', 'DELIVERY_CHANNEL']),
   slots: z.object({
-    content_type: z.enum(['text', 'voice', 'photo', 'screenshot', 'image_link', 'selection']).optional(),
-    content_source: z.enum(['selected_text', 'camera', 'gallery', 'clipboard', 'url', 'screen_share']).optional(),
-    topic_tags: z.array(z.string()).optional(),
-    when_type: z.enum(['date', 'datetime', 'recurrence']).optional(),
-    when_value: z.string().optional(), // ISO-8601 or RRULE
-    channel: z.enum(['in_app', 'push', 'email', 'calendar']).optional()
+    content_type: z.enum(['text', 'voice', 'photo', 'screenshot', 'image_link', 'selection']).nullable().optional(),
+    content_source: z.enum(['selected_text', 'camera', 'gallery', 'clipboard', 'url', 'screen_share']).nullable().optional(),
+    topic_tags: z.array(z.string()).nullable().optional(),
+    when_type: z.enum(['date', 'datetime', 'recurrence']).nullable().optional(),
+    when_value: z.string().nullable().optional(), // ISO-8601 or RRULE
+    channel: z.enum(['in_app', 'push', 'email', 'calendar']).nullable().optional()
   })
 })
 
