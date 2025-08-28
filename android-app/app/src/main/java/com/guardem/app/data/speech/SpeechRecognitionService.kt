@@ -6,17 +6,18 @@ import android.os.Bundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import dagger.hilt.android.qualifiers.ApplicationContext
+// import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import java.util.Locale
-import javax.inject.Inject
-import javax.inject.Singleton
+// import javax.inject.Inject
+// import javax.inject.Singleton
 
-@Singleton
-class SpeechRecognitionService @Inject constructor(
-    @ApplicationContext private val context: Context
+// @Singleton  // Temporarily disabled for build fix
+class SpeechRecognitionService( // @Inject constructor(
+    // @ApplicationContext 
+    private val context: Context
 ) {
     private var speechRecognizer: SpeechRecognizer? = null
     private val wakeWord = "guarde me"
@@ -92,7 +93,7 @@ class SpeechRecognitionService @Inject constructor(
             putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR")
             putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "pt-BR")
-            putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_VARIANCE, "pt-BR")
+            // putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_VARIANCE, "pt-BR") // Deprecated constant
             putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
             putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1)
         }
@@ -169,7 +170,7 @@ class SpeechRecognitionService @Inject constructor(
             putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR")
             putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "pt-BR")
-            putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_VARIANCE, "pt-BR")
+            // putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_VARIANCE, "pt-BR") // Deprecated constant
             putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
             putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
             putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 2000)

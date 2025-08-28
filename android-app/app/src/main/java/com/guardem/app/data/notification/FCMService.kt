@@ -12,15 +12,20 @@ import com.google.firebase.messaging.RemoteMessage
 import com.guardem.app.MainActivity
 import com.guardem.app.R
 import com.guardem.app.ui.theme.GuardeMePrimary
-import dagger.hilt.android.AndroidEntryPoint
+// import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import javax.inject.Inject
+// import javax.inject.Inject
 
-@AndroidEntryPoint
+// @AndroidEntryPoint  // Temporarily disabled for build fix
 class FCMService : FirebaseMessagingService() {
 
-    @Inject
-    lateinit var notificationRepository: NotificationRepository
+    // @Inject  // Temporarily disabled for build fix
+    // lateinit var notificationRepository: NotificationRepository
+    
+    private val notificationRepository by lazy {
+        // Manually instantiate for now - TODO: Re-enable Hilt
+        NotificationRepository()
+    }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)

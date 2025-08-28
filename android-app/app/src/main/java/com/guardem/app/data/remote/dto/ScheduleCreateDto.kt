@@ -45,24 +45,34 @@ data class MemoryDto(
     val id: String,
     @SerializedName("user_id")
     val userId: String,
-    val content: String,
+    @SerializedName("content_text")
+    val contentText: String?,
     @SerializedName("content_type")
     val contentType: String,
-    val channel: String,
+    @SerializedName("media_path")
+    val mediaPath: String?,
+    val source: String?,
+    val tags: List<String>,
+    @SerializedName("privacy_mode")
+    val privacyMode: String,
     @SerializedName("created_at")
     val createdAt: String
 )
 
 data class ScheduleDto(
     val id: String,
+    @SerializedName("user_id")
+    val userId: String,
     @SerializedName("memory_id")
     val memoryId: String,
-    @SerializedName("schedule_type")
-    val scheduleType: String,
-    @SerializedName("trigger_at")
-    val triggerAt: String?,
-    @SerializedName("rrule_pattern")
-    val rrulePattern: String?,
+    @SerializedName("when_type")
+    val whenType: String,
+    val dtstart: String?,
+    val rrule: String?,
+    val timezone: String,
+    val status: String,
+    @SerializedName("next_run_at")
+    val nextRunAt: String?,
     @SerializedName("created_at")
     val createdAt: String
 )
@@ -71,4 +81,10 @@ data class DeliveryRunResponse(
     val processed: Int,
     val successful: Int,
     val failed: Int
+)
+
+data class MemoriesResponse(
+    val success: Boolean,
+    val data: List<MemoryDto>,
+    val count: Int
 )

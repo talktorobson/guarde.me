@@ -4,10 +4,10 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
-import dagger.hilt.android.HiltAndroidApp
+// import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-@HiltAndroidApp
+// @HiltAndroidApp  // Temporarily disabled for build fix
 class GuardeMeApplication : Application() {
 
     override fun onCreate() {

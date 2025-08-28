@@ -53,7 +53,7 @@ fun GuardeMeTheme(
     ) {
         MaterialTheme(
             colors = colors,
-            typography = GuardeMeTypography,
+            typography = GuardeMeMaterial2Typography,
             shapes = LocalGuardeMeDesign.shapes,
             content = content
         )

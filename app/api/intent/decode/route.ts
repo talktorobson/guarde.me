@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { GoogleGenAI, createUserContent } from '@google/genai'
 import { z } from 'zod'
 
 // Schema for intent parsing response
 const IntentSchema = z.object({
   intent: z.enum(['SAVE_MEMORY', 'SCHEDULE_REPLAY', 'DELIVERY_CHANNEL']),
   slots: z.object({
-    content_type: z.enum(['text', 'voice', 'photo', 'screenshot', 'image_link', 'selection']).nullable().optional(),
-    content_source: z.enum(['selected_text', 'camera', 'gallery', 'clipboard', 'url', 'screen_share']).nullable().optional(),
-    topic_tags: z.array(z.string()).nullable().optional(),
-    when_type: z.enum(['date', 'datetime', 'recurrence']).nullable().optional(),
-    when_value: z.string().nullable().optional(), // ISO-8601 or RRULE
-    channel: z.enum(['in_app', 'push', 'email', 'calendar']).nullable().optional()
+    content_type: z.enum(['text', 'voice', 'photo', 'screenshot', 'image_link', 'selection']).optional().or(z.null()).optional(),
+    content_source: z.enum(['selected_text', 'camera', 'gallery', 'clipboard', 'url', 'screen_share']).optional().or(z.null()).optional(),
+    topic_tags: z.array(z.string()).optional().or(z.null()).optional(),
+    when_type: z.enum(['date', 'datetime', 'recurrence']).optional().or(z.null()).optional(),
+    when_value: z.string().optional().or(z.null()).optional(), // ISO-8601 or RRULE
+    channel: z.enum(['in_app', 'push', 'email', 'calendar']).optional().or(z.null()).optional()
   })
 })
 
@@ -37,16 +37,13 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Initialize Gemini
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+    // Initialize Gemini with new API
+    const ai = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY
+    })
 
-    // Create prompt for few-shot learning
-    const prompt = {
-      contents: [{
-        role: 'user' as const,
-        parts: [{
-          text: `You are an intent parser for a voice-first memory app called "Guarde.me". 
+    // Create prompt for few-shot learning using new API
+    const promptText = `You are an intent parser for a voice-first memory app called "Guarde.me". 
           
 Users say "Guarde me" followed by:
 1. What they want to save (text, voice note, photo, etc.)
@@ -74,13 +71,13 @@ Parse this transcript and return ONLY valid JSON matching this exact schema:
 Transcript: "${transcript_redacted}"
 
 Return ONLY the JSON, no other text:`
-        }]
-      }]
-    }
 
-    // Generate content with Gemini
-    const result = await model.generateContent(prompt)
-    const responseText = result.response.text()
+    // Generate content with new Gemini API
+    const result = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: createUserContent([promptText])
+    })
+    const responseText = result.text
 
     // Clean up response (remove markdown formatting if present)
     const jsonText = responseText

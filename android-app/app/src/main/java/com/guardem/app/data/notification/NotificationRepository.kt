@@ -6,16 +6,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import javax.inject.Inject
-import javax.inject.Singleton
+// import javax.inject.Inject
+// import javax.inject.Singleton
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-@Singleton
-class NotificationRepository @Inject constructor(
-    private val apiService: GuardeMeApiService,
-    private val firebaseMessaging: FirebaseMessaging
+// @Singleton  // Temporarily disabled for build fix
+class NotificationRepository( // @Inject constructor(
+    // private val apiService: GuardeMeApiService,
+    // private val firebaseMessaging: FirebaseMessaging
 ) {
+    // Manually instantiate Firebase Messaging for now - TODO: Re-enable Hilt
+    private val firebaseMessaging by lazy { FirebaseMessaging.getInstance() }
     private val scope = CoroutineScope(Dispatchers.IO)
 
     suspend fun getFCMToken(): String? {
@@ -43,7 +45,8 @@ class NotificationRepository @Inject constructor(
                 // val request = FCMTokenRequest(token = token)
                 // val response = apiService.registerFCMToken(request)
                 
-                Timber.d("FCM token registered: $token")
+                Timber.d("FCM token updated (temp implementation): $token")
+                // For now, just log the token - backend integration will come later
                 
             } catch (e: Exception) {
                 Timber.e(e, "Failed to register FCM token")

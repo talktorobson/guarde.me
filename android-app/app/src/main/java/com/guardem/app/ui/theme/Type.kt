@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.sp
 val GuardeMeFontFamily = FontFamily.Default // Replace with custom fonts
 
 // Guarde.me Typography System - Material 2
-val GuardeMeTypography = Typography(
+val GuardeMeMaterial2Typography = Typography(
     h1 = TextStyle(
         fontFamily = GuardeMeFontFamily,
         fontWeight = FontWeight.Light,

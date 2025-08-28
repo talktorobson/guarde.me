@@ -32,6 +32,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GuardeMe"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <!-- Main Activity -->
@@ -53,25 +54,5 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <!-- Background Sync Service -->
-        <service
-            android:name=".data.sync.BackgroundSyncService"
-            android:enabled="true"
-            android:exported="false" />
-
-        <!-- Notification channels -->
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_notification" />
-        
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/primary" />
-
-        <!-- Default notification channel -->
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/default_notification_channel_id" />
     </application>
 </manifest>
