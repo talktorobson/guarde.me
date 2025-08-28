@@ -1,6 +1,6 @@
 package com.guardem.app.ui.theme
 
-import androidx.compose.material3.Typography
+import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -11,120 +11,84 @@ import androidx.compose.ui.unit.sp
 // In a real implementation, add font files to res/font/ directory
 val GuardeMeFontFamily = FontFamily.Default // Replace with custom fonts
 
-// Guarde.me Typography System
+// Guarde.me Typography System - Material 2
 val GuardeMeTypography = Typography(
-    // Display styles - for hero sections and landing pages
-    displayLarge = TextStyle(
+    h1 = TextStyle(
+        fontFamily = GuardeMeFontFamily,
+        fontWeight = FontWeight.Light,
+        fontSize = 96.sp,
+        letterSpacing = (-1.5).sp,
+    ),
+    h2 = TextStyle(
+        fontFamily = GuardeMeFontFamily,
+        fontWeight = FontWeight.Light,
+        fontSize = 60.sp,
+        letterSpacing = (-0.5).sp,
+    ),
+    h3 = TextStyle(
         fontFamily = GuardeMeFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 57.sp,
-        lineHeight = 64.sp,
-        letterSpacing = (-0.25).sp,
+        fontSize = 48.sp,
+        letterSpacing = 0.sp,
     ),
-    displayMedium = TextStyle(
+    h4 = TextStyle(
         fontFamily = GuardeMeFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 45.sp,
-        lineHeight = 52.sp,
-        letterSpacing = 0.sp,
-    ),
-    displaySmall = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 36.sp,
-        lineHeight = 44.sp,
-        letterSpacing = 0.sp,
-    ),
-    
-    // Headline styles - for section headers
-    headlineLarge = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 32.sp,
-        lineHeight = 40.sp,
-        letterSpacing = 0.sp,
-    ),
-    headlineMedium = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 28.sp,
-        lineHeight = 36.sp,
-        letterSpacing = 0.sp,
-    ),
-    headlineSmall = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 24.sp,
-        lineHeight = 32.sp,
-        letterSpacing = 0.sp,
-    ),
-    
-    // Title styles - for card headers and dialog titles
-    titleLarge = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp,
-    ),
-    titleMedium = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.15.sp,
-    ),
-    titleSmall = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.1.sp,
-    ),
-    
-    // Body styles - for main content text
-    bodyLarge = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp,
-    ),
-    bodyMedium = TextStyle(
-        fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
+        fontSize = 34.sp,
         letterSpacing = 0.25.sp,
     ),
-    bodySmall = TextStyle(
+    h5 = TextStyle(
         fontFamily = GuardeMeFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.4.sp,
+        fontSize = 24.sp,
+        letterSpacing = 0.sp,
     ),
-    
-    // Label styles - for form labels and button text
-    labelLarge = TextStyle(
+    h6 = TextStyle(
+        fontFamily = GuardeMeFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 20.sp,
+        letterSpacing = 0.15.sp,
+    ),
+    subtitle1 = TextStyle(
+        fontFamily = GuardeMeFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        letterSpacing = 0.15.sp,
+    ),
+    subtitle2 = TextStyle(
         fontFamily = GuardeMeFontFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
-        lineHeight = 20.sp,
         letterSpacing = 0.1.sp,
     ),
-    labelMedium = TextStyle(
+    body1 = TextStyle(
         fontFamily = GuardeMeFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 12.sp,
-        lineHeight = 16.sp,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
         letterSpacing = 0.5.sp,
     ),
-    labelSmall = TextStyle(
+    body2 = TextStyle(
+        fontFamily = GuardeMeFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        letterSpacing = 0.25.sp,
+    ),
+    button = TextStyle(
         fontFamily = GuardeMeFontFamily,
         fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp,
+        fontSize = 14.sp,
+        letterSpacing = 1.25.sp,
+    ),
+    caption = TextStyle(
+        fontFamily = GuardeMeFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        letterSpacing = 0.4.sp,
+    ),
+    overline = TextStyle(
+        fontFamily = GuardeMeFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp,
+        letterSpacing = 1.5.sp,
     )
 )

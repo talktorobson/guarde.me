@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 // Guarde.me Brand Colors - Light Theme
 val GuardeMePrimary = Color(0xFF4A90E2)           // Calm blue for trust and reliability
+val GuardeMePrimaryVariant = Color(0xFF1565C0)    // Darker variant for Material 2
 val GuardeMeOnPrimary = Color(0xFFFFFFFF)
 val GuardeMePrimaryContainer = Color(0xFFE3F2FD)
 val GuardeMeOnPrimaryContainer = Color(0xFF0D47A1)
@@ -36,6 +37,7 @@ val GuardeMeScrim = Color(0xFF000000)
 
 // Guarde.me Brand Colors - Dark Theme
 val GuardeMePrimaryDark = Color(0xFF90CAF9)       // Lighter blue for dark theme
+val GuardeMePrimaryVariantDark = Color(0xFF42A5F5) // Material 2 variant for dark theme
 val GuardeMeOnPrimaryDark = Color(0xFF0D47A1)
 val GuardeMePrimaryContainerDark = Color(0xFF1565C0)
 val GuardeMeOnPrimaryContainerDark = Color(0xFFE3F2FD)
